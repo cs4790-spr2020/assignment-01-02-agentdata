@@ -14,7 +14,7 @@ Execute the commands below to setup your BlabberApp solution.
 
 - `mkdir -p BlabberApp`
 - `cd BlabberApp`
-- `dotnet new sln BlabberApp`
+- `dotnet new sln -o BlabberApp`
 - `dotnet new webapp -o BlabberApp.Client`
 - `dotnet new mstest -o BlabberApp.ClientTest`
 - `dotnet new console -o BlabberApp.Console`
@@ -24,6 +24,12 @@ Execute the commands below to setup your BlabberApp solution.
 - `dotnet new mstest -o BlabberApp.DataStoreTest`
 - `dotnet new classlib -o BlabberApp.Domain`
 - `dotnet new mstest -o BlabberApp.DomainTest`
+
+dotnet sln BlabberApp.sln add ./BlabberApp.Client/BlabberApp.Client.csproj ./BlabberApp.DataStore/BlabberApp.DataStore.csproj ./BlabberApp.DataStoreTest/BlabberApp.DataStoreTest.csproj ./BlabberApp.WebApi/BlabberApp.WebApi.csproj
+dotnet add ./BlabberApp.Client/BlabberApp.Client.csproj reference ./BlabberApp.DataStore/BlabberApp.DataStore.csproj
+dotnet add ./BlabberApp.Client/BlabberApp.WebApi.csproj reference ./BlabberApp.DataStore/BlabberApp.DataStore.csproj
+dotnet add ./BlabberApp.WebApi/BlabberApp.WebApi.csproj reference ./BlabberApp.DataStore/BlabberApp.DataStore.csproj
+dotnet add ./BlabberApp.DataStoreTest/BlabberApp.DataStoreTest.csproj reference ./BlabberApp.DataStore/BlabberApp.DataStore.csproj
 
 Execute the command below to build your BlabberApp solution: `dotnet build BlabberApp.sln`
 
